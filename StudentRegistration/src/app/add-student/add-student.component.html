@@ -1,0 +1,124 @@
+<h2>Sign Up</h2>
+<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <label>
+    <span>First name: </span>
+    <input
+      type="text"
+      placeholder="First name"
+      name="fname"
+      ngModel
+      #firstName="ngModel"
+      minlength="2"
+      required>
+  </label><br/><br/>
+
+  <div *ngIf="firstName.errors?.required && firstName.touched" class="error">
+    First Name is required
+   </div>
+   <div *ngIf="firstName.errors?.minlength && firstName.touched" class="error">
+    Minimum of 2 characters
+   </div>
+ 
+   <label>
+    <span>Last name: </span>
+    <input
+      type="text"
+      placeholder="Last name"
+      name="lname"
+      ngModel
+      #lastName="ngModel"
+      minlength="2"
+      required>
+  </label><br/><br/>
+
+  <div *ngIf="lastName.errors?.required && lastName.touched" class="error">
+    Last Name is required
+   </div>
+   <div *ngIf="lastName.errors?.minlength && lastName.touched" class="error">
+    Minimum of 2 characters
+   </div>
+
+   <label>
+     <span>Gender: </span>
+     <input
+       type="radio"
+       name="gender"
+       value="Male"
+       ngModel
+       #gender="ngModel"
+       required>
+      <span>Male</span>
+     <input
+       type="radio"
+       name="gender"
+       value="Female"
+       ngModel
+       #gender="ngModel"
+       required>
+       <span>Female</span>
+   </label><br/><br/>
+      
+   <div *ngIf="gender.errors?.required && gender.untouched">
+     Gender is required
+   </div>
+   
+    <!-- <label>
+      <span>Mobile No. :</span>
+      <input type="number"
+      ngModel
+      name="mobile"
+      placeholder="Mobile No."
+      #mobile="ngModel"
+      pattern="^((\\+91-?)|0)?[0-9]{10}$"
+      required>
+    </label>
+    <br><br>
+    <div *ngIf="mobile.errors?.required && mobile.touched" class="error">
+      Mobile No. is required
+    </div>
+    <div *ngIf="mobile.errors?.pattern && mobile.touched" class="error">
+        Invalid mobile number
+      </div> -->
+
+    <br>
+    <label>
+      <span>Email address: </span>
+      <input
+        type="email"
+        placeholder="Email address"
+        name="email"
+        ngModel
+        #email="ngModel"
+        pattern="^(.+)@(.+)$" 
+        required>
+    </label><br/><br/>
+
+    <div *ngIf="email.errors?.required && email.touched" class="error">
+      Email is required
+    </div>
+    <div *ngIf="email.errors?.pattern && email.touched">
+      Invalid Email address
+    </div>
+
+    <label>
+      <span>Confirm address: </span>
+      <input
+        type="email"
+        placeholder="Confirm Email address"
+        name="confirm"
+        ngModel
+        #confirm="ngModel"
+        pattern="^(.+)@(.+)$"
+        required>
+    </label>
+
+    <div *ngIf="confirm.errors?.required && confirm.touched" class="error">
+        This field is required
+      </div>
+    <div *ngIf="confirm.errors?.pattern && confirm.touched">
+        Invalid Email address
+      </div>
+  <br/><br/>
+  <button type="submit" [disabled]="f.invalid">Sign up</button><br><br>
+  {{f.value | json}}
+</form>

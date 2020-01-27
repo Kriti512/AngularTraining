@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <h2>Sign Up</h2>
+    <form (ngSubmit)="onSubmit(signup)" [formGroup]="signup">
+        <div class="form-group">
+            <label>First Name</label>
+            <input [class.is-invalid]="signup.get('firstName').invalid && signup.get('firstName').touched" 
+            formControlName="firstName" type="text" class="form-control">
+            <br><br>     
+            <div class="error" *ngIf="signup.get('firstName').touched && signup.get('firstName').hasError('required')">
+                First Name is required
+              </div>
+        </div>
+        <br/> <br/>
+        <div class="form-group">
+                <label>Last Name</label>
+                <input formControlName="lastName" type="text" class="form-control">
+                <br><br>
+                <div class="error" *ngIf="signup.get('lastName').touched && signup.get('lastName').hasError('required')">
+                    Last Name is required
+                  </div>
+        </div>
+        <br/> <br/>
+        
+        <div class="form-group">
+                <label>Email: </label>
+                <input formControlName="email" type="email" class="form-control">
+                <br><br>
+                <div class="error" *ngIf="signup.get('email').touched && signup.get('email').hasError('required')">
+                    Email is required
+                  </div>
+        </div>
+        <br/> <br/>
+        <div class="form-group">
+            <label>Confirm Email: </label>
+            <input formControlName="confirmEmail" type="email" class="form-control">
+            <br><br>
+                <div class="error" *ngIf="signup.get('confirmEmail').touched && signup.get('confirmEmail').hasError('required')">
+                    This field is required
+                  </div>
+        </div>
+        <br/> <br/>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+    <br><br>
+    {{signup.value | json}}
+</div>
