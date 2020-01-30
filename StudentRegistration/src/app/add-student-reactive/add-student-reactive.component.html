@@ -22,21 +22,25 @@
         <br/> <br/>
         
         <div class="form-group">
-                <label>Email: </label>
-                <input formControlName="email" type="email" class="form-control">
+                <label>Password: </label>
+                <input formControlName="password" type="password" class="form-control">
                 <br><br>
-                <div class="error" *ngIf="signup.get('email').touched && signup.get('email').hasError('required')">
-                    Email is required
+                <div class="error" *ngIf="signup.get('password').touched && signup.get('password').hasError('required')">
+                    This field is required
                   </div>
         </div>
         <br/> <br/>
         <div class="form-group">
-            <label>Confirm Email: </label>
-            <input formControlName="confirmEmail" type="email" class="form-control">
+            <label>Confirm Password: </label>
+            <input formControlName="confirmPassword" type="password" class="form-control">
             <br><br>
-                <div class="error" *ngIf="signup.get('confirmEmail').touched && signup.get('confirmEmail').hasError('required')">
-                    This field is required
-                  </div>
+            <div class="error" *ngIf="signup.get('confirmPassword').touched && signup.get('confirmPassword').hasError('required')">
+              This field is required
+              </div>
+              <div class="error" *ngIf="signup.errors?.mismatch">
+                Passwords do not match
+              </div>
+                  
         </div>
         <br/> <br/>
         <button class="btn btn-primary" type="submit">Sign Up</button>
