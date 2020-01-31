@@ -9,6 +9,9 @@
             <div class="error" *ngIf="signup.get('firstName').touched && signup.get('firstName').hasError('required')">
                 First Name is required
               </div>
+              <div class="error" *ngIf="signup.get('firstName').errors?.forbiddenName">
+                Name not allowed
+              </div>
         </div>
         <br/> <br/>
         <div class="form-group">

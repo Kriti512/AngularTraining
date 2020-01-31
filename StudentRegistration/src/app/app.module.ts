@@ -8,6 +8,8 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { AddStudentComponent } from './add-student/add-student.component';
 import { AddStudentReactiveComponent } from './add-student-reactive/add-student-reactive.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { StudentService } from './student.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path:'',component: StudentDetailsComponent},
@@ -27,9 +29,10 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

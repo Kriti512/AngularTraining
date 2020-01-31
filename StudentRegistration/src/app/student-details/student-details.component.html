@@ -7,3 +7,17 @@ Email: <label><input type=text [(ngModel)]="email" [placeholder]="email"></label
 <label>Mother's Name: </label><label [innerHtml]="mothername" ></label><br/><br/>
 <input type="button" value="submit" [disabled]="flag"><br/><br/>
 <input type="button" value="cancel" [disabled]="!flag">
+
+<h2>Student Details</h2>
+<table border="1" width="35%">
+    <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Age</th>
+    </tr>
+    <tr *ngFor="let student of studentss">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+    </tr>
+</table>
